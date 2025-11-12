@@ -1,27 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="app.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robinhood: Informational Guide</title>
+  <meta name="description" content="An educational overview of Robinhood, the trading app—features, fees, security, risks, and FAQs." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1220;
+      --bg-2: #121530;
+      --card: #171a2f;
+      --text: #eaf0ff;
+      --muted: #aeb7d9;
+      --accent: #78e6a2;
+      --accent-2: #6fc0ff;
+      --border: #263052;
+      --danger: #ffb3b3;
+    }
+
+    /* Reset + base */
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, #1e2246 0%, rgba(18,16,48,0) 60%),
+        radial-gradient(900px 400px at 90% 20%, #0b5d82 0%, rgba(18,16,48,0) 70%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: relative;
+      padding: 40px 0 20px 0;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 0;
+    }
+    .logo {
+      display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.4px;
+    }
+    .logo-badge {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: conic-gradient(from 180deg, #74f49b, #4cd37b, #1aa158, #74f49b);
+      box-shadow: 0 0 0 2px rgba(120,230,162,0.25), 0 10px 20px rgba(26,161,88,0.25);
+    }
+    .nav ul { display: flex; flex-wrap: wrap; gap: 14px; list-style: none; margin: 0; padding: 0; }
+    .nav a { padding: 8px 12px; border-radius: 8px; background: transparent; }
+    .nav a:hover { background: rgba(38,48,82,0.5); }
+
+    /* Hero */
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center;
+      padding: 24px 0 40px 0;
+    }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(23,26,47,0.7), rgba(23,26,47,0.3));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      backdrop-filter: blur(10px);
+    }
+    .hero h1 { margin: 0 0 12px 0; font-size: 2.1rem; line-height: 1.15; }
+    .hero p { margin: 0 0 16px 0; color: var(--muted); }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border);
+      background: #1a1d37; color: var(--text); cursor: pointer; transition: transform 0.05s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: linear-gradient(180deg, #1aa158, #0e6e3a); border-color: #1aa158; }
+    .btn.secondary { background: linear-gradient(180deg, #14365a, #0b2343); border-color: #274a80; }
+
+    .hero-visual {
+      position: relative; min-height: 260px; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(400px 200px at 70% 20%, rgba(111,192,255,0.25), rgba(0,0,0,0)),
+        radial-gradient(280px 160px at 30% 80%, rgba(120,230,162,0.22), rgba(0,0,0,0)),
+        #121530;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .shape {
+      position: absolute; border-radius: 12px; filter: blur(1px); opacity: 0.85; mix-blend-mode: screen;
+    }
+    .shape.green { background: linear-gradient(135deg, #74f49b, #1aa158); }
+    .shape.blue { background: linear-gradient(135deg, #6fc0ff, #1e7fd3); }
+    .shape.pill { border-radius: 999px; }
+
+    /* Sections */
+    section { padding: 42px 0; }
+    .section-title { font-size: 1.6rem; margin: 0 0 10px 0; }
+    .section-sub { color: var(--muted); margin: 0 0 20px 0; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .card h3 { margin: 0 0 8px 0; font-size: 1.1rem; }
+    .card p { margin: 0; color: var(--muted); }
+
+    /* Pros/Cons */
+    .list { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .list li { list-style: none; background: rgba(26,161,88,0.08); border: 1px dashed #2a6f4d; padding: 12px; border-radius: 10px; }
+    .list li.neg { background: rgba(255,125,125,0.08); border-color: #7f3e3e; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    thead th {
+      text-align: left; background: #1b2144; color: var(--text); padding: 12px; border-bottom: 1px solid var(--border);
+    }
+    tbody td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--muted); }
+    tbody tr:hover { background: rgba(38,48,82,0.35); }
+
+    /* FAQ */
+    details {
+      border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--card);
+    }
+    details + details { margin-top: 12px; }
+    summary { font-weight: 600; cursor: pointer; }
+    summary::-webkit-details-marker { display: none; }
+
+    /* Footer */
+    footer { padding: 30px 0; color: var(--muted); border-top: 1px solid var(--border); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .nav ul { gap: 8px; }
+    }
+  </style>
 </head>
 <body>
-    <h1 
-        style="text-align: center;"
-        style="font-family: Verdana, Geneva, Tahoma, sans-serif;"
-        >
-        
-        SYNTAX ERROR JOKE OF THE DAY</h1>
-    <div>
-        <h3 style="text-align: center;">Click to generate a joke of the day</h3>
-        <button style="align: center;">Make Me Laugh!</button>
+  <header class="container">
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="logo" aria-label="Site logo">
+        <span class="logo-badge" aria-hidden="true"></span>
+        <span>Robinhood: Informational Guide</span>
+      </div>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#fees">Fees</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#risks">Risks</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-card">
+        <h1>Robinhood: A beginner-friendly trading app</h1>
+        <p>Explore how Robinhood works, what it offers, and the considerations to keep in mind. This page is educational and does not provide financial advice.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#overview">Start here</a>
+          <a class="btn secondary" href="#features">See features</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <!-- Decorative floating shapes -->
+        <span class="shape green pill" style="top:16px; right:24px; width:160px; height:34px;"></span>
+        <span class="shape blue" style="bottom:24px; left:24px; width:120px; height:120px;"></span>
+        <span class="shape green" style="top:110px; left:120px; width:80px; height:80px;"></span>
+        <span class="shape blue pill" style="top:190px; right:70px; width:220px; height:28px;"></span>
+      </div>
     </div>
-    <p style="text-align: center;">{joke}</p>
-</body>
-<footer style="text-align: center;">Ivy Tech IT Challenge - November 7th, 2025</footer>
-</html>
+  </header>
+
+  <main class="container">
+    <section id="overview" aria-labelledby="overview-title">
+      <h2 class="section-title" id="overview-title">Overview</h2>
+      <p class="section-sub">
+        Robinhood is a mobile-first platform for trading and investing. It offers commission-free trading for certain products, simple interfaces, and basic tools aimed at accessibility. Users can view market data, place orders, and manage accounts from the app or web.
+      </p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Purpose</h3>
+          <p>Provide a streamlined way to buy and sell eligible financial instruments with a focus on ease of use.</p>
+        </div>
+        <div class="card">
+          <h3>Audience</h3>
+          <p>Retail investors seeking a simplified experience, with options to learn and participate in markets.</p>
+        </div>
+        <div class="card">
+          <h3>Availability</h3>
+          <p>Accessible via iOS/Android apps and a web platform; account eligibility and features vary by region.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" aria-labelledby="features-title">
+      <h2 class="section-title" id="features-title">Features</h2>
+      <p class="section-sub">Common capabilities you may find in the app. Specific availability can change over time.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Trading products</h3>
+          <p>Stocks, ETFs, options, and cryptocurrencies (availability and restrictions may apply). Fractional shares are supported for select equities.</p>
+        </div>
+        <div class="card">
+          <h3>Account types</h3>
+          <p>Standard brokerage accounts, with optional features such as margin (subject to eligibility) and premium subscriptions.</p>
+        </div>
+        <div class="card">
+          <h3>Tools & research</h3>
+          <p>Watchlists, basic charting, news integrations, alerts, and educational content within the app.</p>
+        </div>
+        <div class="card">
+          <h3>User experience</h3>
+          <p>Mobile-first design, quick onboarding, and streamlined order placement flows with simplified settings.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" aria-labelledby="how-title">
+      <h2 class="section-title" id="how-title">How it works</h2>
+      <p class="section-sub">A typical user journey from sign-up to placing a trade.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>1. Sign up & verify</h3>
+          <p>Create an account, complete identity verification, and connect a funding source (e.g., bank account) to deposit funds.</p>
+        </div>
+        <div class="card">
+          <h3>2. Explore and learn</h3>
+          <p>Browse watchlists, read basic educational materials, and review disclosures related to products and risks.</p>
+        </div>
+        <div class="card">
+          <h3>3. Place orders</h3>
+          <p>Select an instrument and choose order types (market, limit, etc.). Review details before submitting.</p>
+        </div>
+        <div class="card">
+          <h3>4. Manage & monitor</h3>
+          <p>Track positions, view performance, set alerts, and adjust your approach as you learn.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="fees" aria-labelledby="fees-title">
+      <h2 class="section-title" id="fees-title">Fees and costs</h2>
+      <p class="section-sub">Commission-free trading may apply to certain products, but other fees can exist.</p>
+      <table aria-label="Fees table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>What to know</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Commissions</td>
+            <td>Many stock and ETF trades are commission-free; verify product-specific terms within the app.</td>
+          </tr>
+          <tr>
+            <td>Account fees</td>
+            <td>Premium subscriptions and margin accounts can involve additional costs and requirements.</td>
+          </tr>
+          <tr>
+            <td>Regulatory & pass-through fees</td>
+            <td>Some transactions may incur third-party, regulatory, or exchange-related fees.</td>
+          </tr>
+          <tr>
+            <td>Other costs</td>
+
 
 
 
