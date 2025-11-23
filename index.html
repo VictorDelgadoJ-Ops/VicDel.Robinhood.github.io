@@ -3,53 +3,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Robinhood: Informational Guide</title>
-  <meta name="description" content="An educational overview of Robinhood, the trading app—features, fees, security, risks, and FAQs." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f1220;
-      --bg-2: #121530;
-      --card: #171a2f;
-      --text: #eaf0ff;
-      --muted: #aeb7d9;
-      --accent: #78e6a2;
-      --accent-2: #6fc0ff;
-      --border: #263052;
-      --danger: #ffb3b3;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robinhood Clone</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Robinhood Clone</h1>
+    <nav>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#trade">Trade</a>
+    </nav>
+  </header>
 
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 10% 10%, #1e2246 0%, rgba(18,16,48,0) 60%),
-        radial-gradient(900px 400px at 90% 20%, #0b5d82 0%, rgba(18,16,48,0) 70%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-      min-height: 100vh;
-    }
-        a { color: var(--accent-2); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+  <section class="hero">
+    <h2>Investing Made Simple</h2>
+    <p>Track stocks, manage your portfolio, and trade with ease.</p>
+    <button onclick="location.href='#dashboard'">Get Started</button>
+  </section>
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  <section id="dashboard" class="dashboard">
+    <h2>Stock Dashboard</h2>
+    <div id="stock-list"></div>
+  </section>
 
-    header { padding: 40px 0 20px 0; }
-    .nav { display: flex; justify-content: space-between; align-items: center; }
-    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
-    .logo-badge {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: conic-gradient(from 180deg, #74f49b, #1aa158, #74f49b);
-    }
+  <section id="trade" class="trade">
+    <h2>Trade Stocks</h2>
+    <form id="trade-form">
+      <input type="text" placeholder="Stock Symbol" required />
+      <input type="number" placeholder="Quantity" required />
+      <button type="submit">Buy</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Robinhood Clone</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
 
     
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
 
 
 
