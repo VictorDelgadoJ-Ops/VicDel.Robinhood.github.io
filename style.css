@@ -1,12 +1,40 @@
 body {
   margin: 0;
-  padding: 0;
-  background-color: #f0f0f0; /* Light grey base */
-  background-image:
-    radial-gradient(triangle at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 0%, transparent 40%),
-    linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%);
-  background-size: 200px 200px, 200px 200px, 40px 40px, 40px 40px;
-  background-repeat: no-repeat, no-repeat, repeat, repeat;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #111;
+}
+
+nav a {
+  margin-left: 1rem;
+  color: #0ff;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #0ff;
+  border: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.dashboard, .trade {
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 1rem;
+  border-radius: 8px;
 }
