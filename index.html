@@ -181,6 +181,26 @@
 
 <!-- Scroll to Top Button -->
 <button id="scrollTopBtn" class="btn secondary" aria-label="Scroll to top" style="position:fixed;bottom:20px;right:20px;display:none;">↑ Top</button>
+<script>
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Scroll-to-top button
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  window.addEventListener("scroll", () => {
+    scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // FAQ accordion (optional: already works with <details>)
+</script>
 
 <footer>
   <p>&copy; 2025 Robinhood Informational Guide</p>
@@ -191,6 +211,7 @@
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
 
 
 
