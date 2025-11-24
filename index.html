@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robinhood: Informational Guide</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    
     :root {
       --bg: #0f1220;
       --bg-2: #121530;
@@ -15,6 +16,20 @@
       --accent-2: #6fc0ff;
       --border: #263052;
       --danger: #ffb3b3;
+      --table-head: #1b2144;
+    }
+
+    body.light {
+      --bg: #f5f7fa;
+      --bg-2: #e2e8f0;
+      --card: #ffffff;
+      --text: #1a202c;
+      --muted: #4a5568;
+      --accent: #2f855a;
+      --accent-2: #3182ce;
+      --border: #cbd5e0;
+      --danger: #e53e3e;
+      --table-head: #edf2f7;
     }
 
     * { box-sizing: border-box; }
@@ -27,22 +42,33 @@
         radial-gradient(900px 400px at 90% 20%, #0b5d82 0%, rgba(18,16,48,0) 70%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
     }
+
     a { color: var(--accent-2); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
     header { padding: 40px 0 20px 0; }
-    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
     .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
-    .logo-badge {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: conic-gradient(from 180deg, #74f49b, #1aa158, #74f49b);
-    }
+    .logo img { height: 36px; width: auto; }
+    .actions { display: flex; align-items: center; gap: 10px; }
+
     .nav ul { display: flex; gap: 14px; list-style: none; margin: 0; padding: 0; }
     .nav a { padding: 8px 12px; border-radius: 8px; }
-    .nav a:hover { background: rgba(38,48,82,0.5); }
+    .nav a:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
+    .nav a:hover { background: rgba(38,48,82,0.35); }
+
+    .toggle-mode {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      color: var(--text);
+    }
 
     .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center; margin-top: 40px; }
     .hero-card {
@@ -51,46 +77,72 @@
     }
     .hero h1 { margin: 0 0 12px 0; font-size: 2.4rem; }
     .hero p { margin: 0 0 16px 0; color: var(--muted); }
-    .btn { padding: 10px 16px; border-radius: 12px; border: 1px solid var(--border); cursor: pointer; font-weight: 600; }
+    .btn {
+      padding: 10px 16px; border-radius: 12px; border: 1px solid var(--border);
+      cursor: pointer; font-weight: 600; transition: transform 0.2s ease-in-out;
+    }
     .btn.primary { background: linear-gradient(180deg, #1aa158, #0e6e3a); color: #fff; }
     .btn.secondary { background: linear-gradient(180deg, #14365a, #0b2343); color: #fff; }
-    .btn:hover { transform: translateY(-2px); transition: all 0.2s ease-in-out; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
     section { padding: 42px 0; }
     .section-title { font-size: 1.6rem; margin-bottom: 10px; }
     .section-sub { color: var(--muted); margin-bottom: 20px; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; transition: all 0.2s ease-in-out; }
+
+    .grid-2, .grid-3 { display: grid; gap: 20px; }
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 18px; transition: all 0.2s ease-in-out;
+    }
     .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.3); }
 
     table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); }
-    thead th { background: #1b2144; color: var(--text); padding: 12px; }
+    thead th { background: var(--table-head); color: var(--text); padding: 12px; text-align: left; }
     tbody td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--muted); }
 
-    details { border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--card); }
+    details {
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 14px; background: var(--card);
+    }
     details + details { margin-top: 12px; }
     summary { font-weight: 600; cursor: pointer; }
+    summary:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 4px; }
 
-    footer { padding: 30px 0; color: var(--muted); border-top: 1px solid var(--border); text-align: center; }
+    footer {
+      padding: 30px 0; color: var(--muted);
+      border-top: 1px solid var(--border); text-align: center;
+    }
     footer a { color: var(--accent-2); margin: 0 10px; }
+
+    #scrollTopBtn {
+      position: fixed; bottom: 20px; right: 20px;
+      display: none; z-index: 999;
+    }
 
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .nav ul { flex-wrap: wrap; }
     }
   </style>
 </head>
 <body>
   <header class="container">
-    <nav class="nav">
+    <nav class="nav" aria-label="Main navigation">
       <div class="logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Robinhood_logo.svg" 
-             alt="Robinhood Logo" 
-             style="height: 36px; width: auto;" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Robinhood_logo.svg" alt="Robinhood Logo" />
         <span>Robinhood: Informational Guide</span>
       </div>
-      <ul>
+      <div class="actions">
+        <button class="toggle-mode" id="modeToggle" aria-pressed="false" aria-label="Toggle light or dark mode">
+          Toggle Light/Dark
+        </button>
+      </div>
+      <ul role="list">
         <li><a href="#overview">Overview</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#fees">Fees</a></li>
@@ -103,7 +155,8 @@
   </header>
 
   <main class="container">
-    <section class="hero">
+    <!-- Hero -->
+    <section class="hero" aria-label="Introduction">
       <div class="hero-card">
         <h1>Learn About Robinhood</h1>
         <p>Understand features, fees, and risks before investing.</p>
@@ -112,6 +165,7 @@
       </div>
     </section>
 
+    <!-- Overview -->
     <section id="overview">
       <h2 class="section-title">Overview</h2>
       <p class="section-sub">Robinhood is a mobile-first platform for trading and investing.</p>
@@ -122,88 +176,133 @@
       </div>
     </section>
 
+    <!-- Features -->
     <section id="features">
       <h2 class="section-title">Features</h2>
       <div class="grid-2">
         <div class="card"><h3>Trading products</h3><p>Stocks, ETFs, options, and cryptocurrencies.</p></div>
-        <div class="card"><h3>Account types</h3><p>Standard brokerage accounts, margin, premium subscriptions.</p></div>
-        <div class="card"><h3>Tools & research</h3><p>Watchlists, charts, news, alerts, education.</p></div>
-<!-- Fees Section -->
-<section id="fees">
-  <h2 class="section-title">Fees</h2>
-  <p class="section-sub">Robinhood offers commission-free trades but may include other costs.</p>
-  <table>
-    <thead>
-      <tr><th>Fee Type</th><th>Details</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Trading</td><td>Commission-free for stocks, ETFs, options.</td></tr>
-      <tr><td>Premium</td><td>$5/month for Robinhood Gold.</td></tr>
-      <tr><td>Other</td><td>Regulatory fees, margin interest, transfer fees.</td></tr>
-    </tbody>
-  </table>
-</section>
+        <div class="card"><h3>Account types</h3><p>Standard brokerage, margin accounts, and premium subscriptions.</p></div>
+        <div class="card"><h3>Tools & research</h3><p>Watchlists, charts, news, alerts, and in-app education.</p></div>
+        <div class="card"><h3>Interface</h3><p>Clean, mobile-first design with streamlined onboarding and trading flows.</p></div>
+      </div>
+    </section>
 
-<!-- Security Section -->
-<section id="security">
-  <h2 class="section-title">Security</h2>
-  <p class="section-sub">Robinhood uses encryption, two-factor authentication, and SIPC insurance to protect user assets.</p>
-</section>
+    <!-- Fees -->
+    <section id="fees">
+      <h2 class="section-title">Fees</h2>
+      <p class="section-sub">Robinhood offers commission-free trades but may include other costs.</p>
+      <table aria-label="Fees table">
+        <thead>
+          <tr><th scope="col">Fee type</th><th scope="col">Details</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Trading</td><td>Commission-free for stocks, ETFs, and options.</td></tr>
+          <tr><td>Premium</td><td>$5/month for Robinhood Gold.</td></tr>
+          <tr><td>Other</td><td>Regulatory fees, margin interest, and transfer fees may apply.</td></tr>
+        </tbody>
+      </table>
+    </section>
 
-<!-- Risks Section -->
-<section id="risks">
-  <h2 class="section-title">Risks</h2>
-  <p class="section-sub">While Robinhood simplifies investing, it may encourage impulsive trading. Market volatility and lack of education can lead to losses.</p>
-</section>
+    <!-- Security -->
+    <section id="security">
+      <h2 class="section-title">Security</h2>
+      <p class="section-sub">Robinhood implements encryption, optional two-factor authentication, and SIPC protection. Remember, SIPC covers brokerage failure, not market losses.</p>
+    </section>
 
-<!-- FAQs Section -->
-<section id="faqs">
-  <h2 class="section-title">FAQs</h2>
-  <details><summary>Is Robinhood free?</summary><p>Yes, trades are commission-free, but other fees may apply.</p></details>
-  <details><summary>Is Robinhood safe?</summary><p>Robinhood uses encryption and insurance, but investing always carries risk.</p></details>
-  <details><summary>Can I trade crypto?</summary><p>Yes, Robinhood supports select cryptocurrencies like Bitcoin and Ethereum.</p></details>
-</section>
+    <!-- Risks -->
+    <section id="risks">
+      <h2 class="section-title">Risks</h2>
+      <p class="section-sub">Investing involves risk. A simplified interface can encourage frequent trading. Market volatility, leverage (margin), and options strategies can magnify losses.</p>
+    </section>
 
-<!-- Resources Section -->
-<section id="resources">
-  <h2 class="section-title">Resources</h2>
-  <p>Visit <a href="https://robinhood.com" target="_blank" rel="noopener">Robinhood’s official site</a> or explore <a href="https://www.investopedia.com" target="_blank" rel="noopener">Investopedia</a> for financial education.</p>
-</section>
+    <!-- FAQs -->
+    <section id="faqs">
+      <h2 class="section-title">FAQs</h2>
+      <details>
+        <summary>Is Robinhood free?</summary>
+        <p>Trades are commission-free, but premium subscriptions and regulatory fees may apply.</p>
+      </details>
+      <details>
+        <summary>Is Robinhood safe?</summary>
+        <p>It uses encryption and offers 2FA; assets are covered by SIPC for brokerage failure. Market risk still applies.</p>
+      </details>
+      <details>
+        <summary>Can I trade crypto?</summary>
+        <p>Yes. Support for select cryptocurrencies like Bitcoin and Ethereum varies by region.</p>
+      </details>
+    </section>
 
-<!-- Legal and Ethical Notice -->
-<section>
-  <p style="color: var(--muted); font-size: 0.9rem;">
-    Disclaimer: This site is not affiliated with Robinhood Markets, Inc. It is for educational purposes only.  
-    <br>
-    Privacy Notice: No personal data is collected or stored through this site.
-  </p>
-</section>
+    <!-- Resources -->
+    <section id="resources">
+      <h2 class="section-title">Resources</h2>
+      <p>
+        Visit <a href="https://robinhood.com" target="_blank" rel="noopener">Robinhood’s official site</a> or explore
+        <a href="https://www.investopedia.com" target="_blank" rel="noopener">Investopedia</a> for financial education.
+      </p>
+    </section>
 
-<!-- Scroll to Top Button -->
-<button id="scrollTopBtn" class="btn secondary" aria-label="Scroll to top" style="position:fixed;bottom:20px;right:20px;display:none;">↑ Top</button>
-<script>
-  // Smooth scroll for nav links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    <!-- Legal & Privacy -->
+    <section aria-label="Legal and privacy notice">
+      <p style="color: var(--muted); font-size: 0.95rem;">
+        Disclaimer: This site is not affiliated with Robinhood Markets, Inc. It is for educational purposes only.
+        <br>
+        Privacy Notice: No personal data is collected or stored through this site.
+      </p>
+    </section>
+  </main>
+
+  <!-- Scroll to Top -->
+  <button id="scrollTopBtn" class="btn secondary" aria-label="Scroll to top">↑ Top</button>
+
+  <footer>
+    <p>&copy; 2025 Robinhood Informational Guide • <a href="#overview">Back to overview</a></p>
+  </footer>
+
+  <script>
+    // Persisted light/dark mode
+    (function initTheme() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.body.classList.add('light');
+        const btn = document.getElementById('modeToggle');
+        if (btn) btn.setAttribute('aria-pressed', 'true');
+      }
+    })();
+
+    document.getElementById('modeToggle').addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      document.getElementById('modeToggle').setAttribute('aria-pressed', String(isLight));
     });
-  });
 
-  // Scroll-to-top button
-  const scrollBtn = document.getElementById("scrollTopBtn");
-  window.addEventListener("scroll", () => {
-    scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-  });
-  scrollBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+    // Smooth scrolling for anchor links (native is fine; ensure focus management)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+        // Move focus for accessibility
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+      });
+    });
 
-  // FAQ accordion (optional: already works with <details>)
-</script>
+    // Scroll-to-top button visibility
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    const toggleScrollBtn = () => {
+      scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    };
+    window.addEventListener('scroll', toggleScrollBtn);
+    window.addEventListener('load', toggleScrollBtn);
 
-<footer>
-  <p>&copy; 2025 Robinhood Informational Guide</p>
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
+
 </footer>
 
 
@@ -211,6 +310,7 @@
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
 
 
 
