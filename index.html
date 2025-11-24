@@ -1,17 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robinhood: Informational Guide</title>
-  <link rel="stylesheet" href="styles.css" />
+@@ -9,28 +9,30 @@
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    
+    :root {
+      --bg: #0f1220;
+      --bg-2: #121530;
+      --card: #171a2f;
+      --text: #eaf0ff;
+      --muted: #aeb7d9;
+      --accent: #78e6a2;
+      --accent-2: #6fc0ff;
+      --border: #263052;
+      --danger: #ffb3b3;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, #1e2246 0%, rgba(18,16,48,0) 60%),
+        radial-gradient(900px 400px at 90% 20%, #0b5d82 0%, rgba(18,16,48,0) 70%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      min-height: 100vh;
+    }
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    header { padding: 40px 0 20px 0; }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .logo-badge {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: conic-gradient(from 180deg, #74f49b, #1aa158, #74f49b);
+    }
+    .nav ul { display: flex; gap: 14px; list-style: none; margin: 0; padding: 0; }
+    .nav a { padding: 8px 12px; border-radius: 8px; }
+    .nav a:hover { background: rgba(38,48,82,0.5); }
+
+    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center; margin-top: 40px; }
+    .hero-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .hero h1 { margin: 0 0 12px 0; font-size: 2.4rem; }
+    .hero p { margin: 0 0 16px 0; color: var(--muted); }
+    .btn { padding: 10px 16px; border-radius: 12px; border: 1px solid var(--border); cursor: pointer; font-weight: 600; }
+    .btn.primary { background: linear-gradient(180deg, #1aa158, #0e6e3a); color: #fff; }
+    .btn.secondary { background: linear-gradient(180deg, #14365a, #0b2343); color: #fff; }
+    .btn:hover { transform: translateY(-2px); transition: all 0.2s ease-in-out; }
+
+    section { padding: 42px 0; }
+    .section-title { font-size: 1.6rem; margin-bottom: 10px; }
+    .section-sub { color: var(--muted); margin-bottom: 20px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; transition: all 0.2s ease-in-out; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.3); }
+
+    table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); }
+    thead th { background: #1b2144; color: var(--text); padding: 12px; }
+    tbody td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--muted); }
+
+    details { border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--card); }
+    details + details { margin-top: 12px; }
+    summary { font-weight: 600; cursor: pointer; }
+
+    footer { padding: 30px 0; color: var(--muted); border-top: 1px solid var(--border); text-align: center; }
+    footer a { color: var(--accent-2); margin: 0 10px; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <header class="container">
     <nav class="nav">
       <div class="logo">
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Robinhood_logo.svg" 
-             alt="Robinhood Logo" style="height:36px;width:auto;" />
+             alt="Robinhood Logo" 
+             style="height: 36px; width: auto;" />
         <span>Robinhood: Informational Guide</span>
       </div>
       <ul>
@@ -36,80 +113,29 @@
       </div>
     </section>
 
-    <!-- Overview -->
     <section id="overview">
       <h2 class="section-title">Overview</h2>
       <p class="section-sub">Robinhood is a mobile-first platform for trading and investing.</p>
       <div class="grid-3">
-        <div class="card"><h3>Purpose</h3><p>Commission-free trading with ease of use.</p></div>
+        <div class="card"><h3>Purpose</h3><p>Commission-free trading with a focus on ease of use.</p></div>
         <div class="card"><h3>Audience</h3><p>Retail investors seeking a simplified experience.</p></div>
         <div class="card"><h3>Availability</h3><p>Accessible via iOS/Android apps and web platform.</p></div>
       </div>
     </section>
 
-    <!-- Features -->
     <section id="features">
       <h2 class="section-title">Features</h2>
       <div class="grid-2">
-        <div class="card"><h3>Trading Products</h3><p>Stocks, ETFs, options, and cryptocurrencies.</p></div>
-        <div class="card"><h3>Account Types</h3><p>Standard brokerage, margin, premium subscriptions.</p></div>
-        <div class="card"><h3>Tools & Research</h3><p>Watchlists, charts, news, alerts, education.</p></div>
-      </div>
-    </section>
-
-    <!-- Fees -->
-    <section id="fees">
-      <h2 class="section-title">Fees</h2>
-      <p class="section-sub">Robinhood offers commission-free trades but has other costs.</p>
-      <table>
-        <thead>
-          <tr><th>Fee Type</th><th>Details</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Trading</td><td>Commission-free for stocks, ETFs, options.</td></tr>
-          <tr><td>Premium</td><td>$5/month for Robinhood Gold.</td></tr>
-          <tr><td>Other</td><td>Regulatory fees, margin interest.</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- Security -->
-    <section id="security">
-      <h2 class="section-title">Security</h2>
-      <p class="section-sub">Robinhood uses encryption, 2FA, and SIPC insurance.</p>
-    </section>
-
-    <!-- Risks -->
-    <section id="risks">
-      <h2 class="section-title">Risks</h2>
-      <p class="section-sub">Investing involves risk. Robinhood’s simplicity can encourage risky behavior.</p>
-    </section>
-
-    <!-- FAQs -->
-    <section id="faqs">
-      <h2 class="section-title">FAQs</h2>
-      <details><summary>Is Robinhood free?</summary><p>Yes, trades are commission-free, but other fees may apply.</p></details>
-      <details><summary>Is Robinhood safe?</summary><p>It uses encryption and insurance, but market risks remain.</p></details>
-    </section>
-
-    <!-- Resources -->
-    <section id="resources">
-      <h2 class="section-title">Resources</h2>
-      <p>Visit Robinhood’s official site or financial education platforms for more info.</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Robinhood Informational Guide</p>
-  </footer>
-</body>
-</html>
+        <div class="card"><h3>Trading products</h3><p>Stocks, ETFs, options, and cryptocurrencies.</p></div>
+        <div class="card"><h3>Account types</h3><p>Standard brokerage accounts, margin, premium subscriptions.</p></div>
+        <div class="card"><h3>Tools & research</h3><p>Watchlists, charts, news, alerts, education.</p></div>
 
 
     
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
 
 
 
