@@ -50,11 +50,13 @@ section {
   padding: 8px 12px;
   z-index: 1000;
   border-radius: 6px;
-  transition: top 0.3s ease;
+  transform: translateY(-200%);
+  transition: transform 0.3s ease;
 }
 
 .skip-link:focus {
-  top: 10px; /* shows the link when focused */
+  transform: translateY(0); /* shows the link when focused */
 }
+
 
 
