@@ -123,42 +123,51 @@
       display: none; z-index: 999;
     }
 
+    /* Image styling for added stock visuals */
+    .stock-img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 16px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
       .nav ul { flex-wrap: wrap; }
       .nav a {
-  padding: 10px 16px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, var(--accent-2), var(--accent));
-  color: #fff;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-}
+        padding: 10px 16px;
+        border-radius: 20px;
+        background: linear-gradient(180deg, var(--accent-2), var(--accent));
+        color: #fff;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      }
 
-.nav a:hover {
-  transform: translateY(-2px) scale(1.05);
-  background: linear-gradient(180deg, var(--accent), var(--accent-2));
-  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-}
+      .nav a:hover {
+        transform: translateY(-2px) scale(1.05);
+        background: linear-gradient(180deg, var(--accent), var(--accent-2));
+        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      }
 
-.nav a:focus-visible {
-  outline: 2px solid var(--accent-2);
-  outline-offset: 4px;
-}
-
+      .nav a:focus-visible {
+        outline: 2px solid var(--accent-2);
+        outline-offset: 4px;
+      }
     }
   </style>
 </head>
 <body>
   <a href="#maincontent" class="skip-link">Skip to content</a>
+
   <header class="container">
     <nav class="nav" aria-label="Main navigation">
       <div class="logo">
-        <img src="https://www.logolounge.com/news/robinhood-goes-minimal" 
-           alt="Robinhood Logo" 
-           style="height:36px;width:auto;" />
+        <!-- Use a direct image file for the logo to render properly -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Robinhood_Markets_logo.svg"
+             alt="Robinhood logo"
+             style="height:36px;width:auto;" />
         <span>Robinhood: Informational Guide</span>
       </div>
       <div class="actions">
@@ -180,32 +189,41 @@
 
   <main id="maincontent" class="container">
     <!-- Hero -->
-   <section class="hero" aria-label="Introduction">
-  <div class="hero-card">
-    <h1>Learn About Robinhood</h1>
-    <p>Understand features, fees, and risks before investing.</p>
-    <!-- Get Started button goes to Robinhood sign-up -->
-    <a href="https://signup.robinhood.com/" 
-       target="_blank" 
-       rel="noopener" 
-       class="btn primary" 
-       aria-label="Sign up for Robinhood">
-       Get Started
-    </a>
-    <!-- Learn More button goes to Robinhood's About page -->
-    <a href="https://robinhood.com/us/en/about/" 
-       target="_blank" 
-       rel="noopener" 
-       class="btn secondary" 
-       aria-label="Learn more about Robinhood">
-       Learn More
-    </a>
-  </div>
-</section>
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-card">
+        <h1>Learn About Robinhood</h1>
+        <p>Understand features, fees, and risks before investing.</p>
+        <!-- Get Started button goes to Robinhood sign-up -->
+        <a href="https://signup.robinhood.com/"
+           target="_blank"
+           rel="noopener"
+           class="btn primary"
+           aria-label="Sign up for Robinhood">
+           Get Started
+        </a>
+        <!-- Learn More button goes to Robinhood's About page -->
+        <a href="https://robinhood.com/us/en/about/"
+           target="_blank"
+           rel="noopener"
+           class="btn secondary"
+           aria-label="Learn more about Robinhood">
+           Learn More
+        </a>
+      </div>
+      <!-- Image 1: Stock Market Chart -->
+      <img class="stock-img"
+           src="https://upload.wikimedia.org/wikipedia/commons/3/33/FTSE_100_index_chart.png"
+           alt="Stock market index chart showing trends" />
+    </section>
+
     <!-- Overview -->
     <section id="overview">
       <h2 class="section-title">Overview</h2>
       <p class="section-sub">Robinhood is a mobile-first platform for trading and investing.</p>
+      <!-- Image 2: Wall Street Charging Bull -->
+      <img class="stock-img"
+           src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Charging_Bull_statue.jpg"
+           alt="Wall Street Charging Bull statue symbolizing market optimism" />
       <div class="grid-3">
         <div class="card"><h3>Purpose</h3><p>Commission-free trading with a focus on ease of use.</p></div>
         <div class="card"><h3>Audience</h3><p>Retail investors seeking a simplified experience.</p></div>
@@ -216,6 +234,10 @@
     <!-- Features -->
     <section id="features">
       <h2 class="section-title">Features</h2>
+      <!-- Image 3: NYSE Trading Floor -->
+      <img class="stock-img"
+           src="https://upload.wikimedia.org/wikipedia/commons/9/9c/NYSE_trading_floor.jpg"
+           alt="New York Stock Exchange trading floor representing market activity" />
       <div class="grid-2">
         <div class="card"><h3>Trading products</h3><p>Stocks, ETFs, options, and cryptocurrencies.</p></div>
         <div class="card"><h3>Account types</h3><p>Standard brokerage, margin accounts, and premium subscriptions.</p></div>
@@ -250,6 +272,10 @@
     <section id="risks">
       <h2 class="section-title">Risks</h2>
       <p class="section-sub">Investing involves risk. A simplified interface can encourage frequent trading. Market volatility, leverage (margin), and options strategies can magnify losses.</p>
+      <!-- Image 4: Candlestick Chart -->
+      <img class="stock-img"
+           src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Candlestick_chart_example.png"
+           alt="Candlestick chart used in technical analysis showing price movements" />
     </section>
 
     <!-- FAQs -->
@@ -341,10 +367,12 @@
 </html>
 
 
+
     
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
 
 
 
