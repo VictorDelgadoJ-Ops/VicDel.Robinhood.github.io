@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Robinhood: Informational Guide</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -48,15 +48,17 @@
            class="btn secondary">Learn More</a>
       </div>
       <img class="stock-img"
+           loading="lazy"
            src="https://upload.wikimedia.org/wikipedia/commons/5/51/US_Stock_Market_-_Investing_in_the_United_States.jpg"
            alt="Picture of the U.S.A flag with stock trends" />
     </section>
 
     <!-- Overview -->
-    <section id="overview">
-      <h2 class="section-title">Overview</h2>
+    <section id="overview" aria-labelledby="overview-title">
+      <h2 id="overview-title" class="section-title">Overview</h2>
       <p class="section-sub">Robinhood is a mobile-first platform for trading and investing.</p>
       <img class="stock-img"
+           loading="lazy"
            src="https://upload.wikimedia.org/wikipedia/commons/3/36/Wall_Street_bubbles_-_Always_the_same_-_Keppler_1901.jpg"
            alt="Wall Street Charging Bull statue symbolizing market optimism" />
       <div class="grid-3">
@@ -67,9 +69,10 @@
     </section>
 
     <!-- Features -->
-    <section id="features">
-      <h2 class="section-title">Features</h2>
+    <section id="features" aria-labelledby="features-title">
+      <h2 id="features-title" class="section-title">Features</h2>
       <img class="stock-img"
+           loading="lazy"
            src="https://upload.wikimedia.org/wikipedia/commons/5/55/New_York_Stock_Exchange_Entrance.jpg"
            alt="New York Stock Exchange trading floor representing market activity" />
       <div class="grid-2">
@@ -81,8 +84,8 @@
     </section>
 
     <!-- Fees -->
-    <section id="fees">
-      <h2 class="section-title">Fees</h2>
+    <section id="fees" aria-labelledby="fees-title">
+      <h2 id="fees-title" class="section-title">Fees</h2>
       <p class="section-sub">Robinhood offers commission-free trades but may include other costs.</p>
       <table aria-label="Fees table">
         <thead>
@@ -97,23 +100,24 @@
     </section>
 
     <!-- Security -->
-    <section id="security">
-      <h2 class="section-title">Security</h2>
+    <section id="security" aria-labelledby="security-title">
+      <h2 id="security-title" class="section-title">Security</h2>
       <p class="section-sub">Robinhood implements encryption, optional two-factor authentication, and SIPC protection. Remember, SIPC covers brokerage failure, not market losses.</p>
     </section>
 
     <!-- Risks -->
-    <section id="risks">
-      <h2 class="section-title">Risks</h2>
+    <section id="risks" aria-labelledby="risks-title">
+      <h2 id="risks-title" class="section-title">Risks</h2>
       <p class="section-sub">Investing involves risk. A simplified interface can encourage frequent trading. Market volatility, leverage (margin), and options strategies can magnify losses.</p>
       <img class="stock-img"
+           loading="lazy"
            src="https://upload.wikimedia.org/wikipedia/commons/3/33/Candlestick_Chart.png"
            alt="Candlestick chart used in technical analysis showing price movements" />
     </section>
 
     <!-- FAQs -->
-    <section id="faqs">
-      <h2 class="section-title">FAQs</h2>
+    <section id="faqs" aria-labelledby="faqs-title">
+      <h2 id="faqs-title" class="section-title">FAQs</h2>
       <details>
         <summary>Is Robinhood free?</summary>
         <p>Trades are commission-free, but premium subscriptions and regulatory fees may apply.</p>
@@ -129,8 +133,8 @@
     </section>
 
     <!-- Resources -->
-    <section id="resources">
-      <h2 class="section-title">Resources</h2>
+    <section id="resources" aria-labelledby="resources-title">
+      <h2 id="resources-title" class="section-title">Resources</h2>
       <p>
         Visit <a href="https://robinhood.com" target="_blank" rel="noopener">Robinhood’s official site</a> or explore
         <a href="https://www.investopedia.com" target="_blank" rel="noopener">Investopedia</a> for financial education.
@@ -141,7 +145,7 @@
     <section aria-label="Legal and privacy notice">
       <p style="color: var(--muted); font-size: 0.95rem;">
         Disclaimer: This site is not affiliated with Robinhood Markets, Inc. It is for educational purposes only.
-        <br>
+        <br />
         Privacy Notice: No personal data is collected or stored through this site.
       </p>
     </section>
@@ -155,26 +159,59 @@
   </footer>
 
   <script>
-    // Persisted light/dark mode
-    (function initTheme() {
+    // Safe helpers
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    // Initialize after DOM is ready to avoid null elements
+    document.addEventListener('DOMContentLoaded', () => {
+      // Persisted light/dark mode
+      const modeBtn = $('#modeToggle');
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {
         document.body.classList.add('light');
-        const btn = document.getElementById('modeToggle');
-        if (btn) btn.setAttribute('aria-pressed', 'true');
+        if (modeBtn) modeBtn.setAttribute('aria-pressed', 'true');
       }
-    })();
+      if (modeBtn) {
+        modeBtn.addEventListener('click', () => {
+          const isLight = document.body.classList.toggle('light');
+          localStorage.setItem('theme', isLight ? 'light' : 'dark');
+          modeBtn.setAttribute('aria-pressed', String(isLight));
+        });
+      }
 
-    document.getElementById('modeToggle').addEventListener('click', () => {
-      const isLight = document.body.classList.toggle('light');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      document.getElementById('modeToggle').setAttribute('aria-pressed', String(isLight));
+      // Smooth scrolling only for targets that exist
+      $$('a[href^="#"]').forEach(anchor => {
+        const href = anchor.getAttribute('href');
+        const target = document.querySelector(href);
+        if (!target) return;
+        anchor.addEventListener('click', (e) => {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
+        });
+      });
+
+      // Scroll-to-top button visibility
+      const scrollBtn = $('#scrollTopBtn');
+      const toggleScrollBtn = () => {
+        if (!scrollBtn) return;
+        scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+      };
+      window.addEventListener('scroll', toggleScrollBtn);
+      window.addEventListener('load', toggleScrollBtn);
+
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     });
+  </script>
+</body>
+</html>
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        const target = document.querySelector
 
 
 
@@ -182,6 +219,7 @@
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
 
 
 
