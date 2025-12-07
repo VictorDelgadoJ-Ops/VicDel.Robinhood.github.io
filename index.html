@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Robinhood: Informational Guide</title>
+
+  <!-- Base ensures relative links resolve under your GitHub Pages repo path -->
+  <base href="/VicDel.Robinhood.github.io/">
+
+  <!-- Google font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- NOTE: repo uses style.css (not styles.css) -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -17,17 +24,19 @@
              alt="Robinhood logo" />
         <span>Robinhood: Informational Guide</span>
       </div>
+
       <div class="actions">
         <button class="toggle-mode" id="modeToggle" aria-pressed="false" aria-label="Toggle light or dark mode">
           Toggle Light/Dark
         </button>
       </div>
+
       <ul role="list">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="tutorials.html">Tutorials</a></li>
-        <li><a href="glossary.html">Glossary</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/tutorials.html">Tutorials</a></li>
+        <li><a href="pages/glossary.html">Glossary</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -38,15 +47,18 @@
       <div class="hero-card">
         <h1>Learn About Robinhood</h1>
         <p>Understand features, fees, and risks before investing.</p>
+
         <a href="https://signup.robinhood.com/"
            target="_blank"
            rel="noopener"
            class="btn primary">Get Started</a>
+
         <a href="https://robinhood.com/us/en/about/"
            target="_blank"
            rel="noopener"
            class="btn secondary">Learn More</a>
       </div>
+
       <img class="stock-img"
            loading="lazy"
            src="https://upload.wikimedia.org/wikipedia/commons/5/51/US_Stock_Market_-_Investing_in_the_United_States.jpg"
@@ -57,10 +69,12 @@
     <section id="overview" aria-labelledby="overview-title">
       <h2 id="overview-title" class="section-title">Overview</h2>
       <p class="section-sub">Robinhood is a mobile-first platform for trading and investing.</p>
+
       <img class="stock-img"
            loading="lazy"
            src="https://upload.wikimedia.org/wikipedia/commons/3/36/Wall_Street_bubbles_-_Always_the_same_-_Keppler_1901.jpg"
            alt="Wall Street Charging Bull statue symbolizing market optimism" />
+
       <div class="grid-3">
         <div class="card"><h3>Purpose</h3><p>Commission-free trading with a focus on ease of use.</p></div>
         <div class="card"><h3>Audience</h3><p>Retail investors seeking a simplified experience.</p></div>
@@ -71,10 +85,12 @@
     <!-- Features -->
     <section id="features" aria-labelledby="features-title">
       <h2 id="features-title" class="section-title">Features</h2>
+
       <img class="stock-img"
            loading="lazy"
            src="https://upload.wikimedia.org/wikipedia/commons/5/55/New_York_Stock_Exchange_Entrance.jpg"
            alt="New York Stock Exchange trading floor representing market activity" />
+
       <div class="grid-2">
         <div class="card"><h3>Trading products</h3><p>Stocks, ETFs, options, and cryptocurrencies.</p></div>
         <div class="card"><h3>Account types</h3><p>Standard brokerage, margin accounts, and premium subscriptions.</p></div>
@@ -87,6 +103,7 @@
     <section id="fees" aria-labelledby="fees-title">
       <h2 id="fees-title" class="section-title">Fees</h2>
       <p class="section-sub">Robinhood offers commission-free trades but may include other costs.</p>
+
       <table aria-label="Fees table">
         <thead>
           <tr><th scope="col">Fee type</th><th scope="col">Details</th></tr>
@@ -109,6 +126,7 @@
     <section id="risks" aria-labelledby="risks-title">
       <h2 id="risks-title" class="section-title">Risks</h2>
       <p class="section-sub">Investing involves risk. A simplified interface can encourage frequent trading. Market volatility, leverage (margin), and options strategies can magnify losses.</p>
+
       <img class="stock-img"
            loading="lazy"
            src="https://upload.wikimedia.org/wikipedia/commons/3/33/Candlestick_Chart.png"
@@ -118,14 +136,17 @@
     <!-- FAQs -->
     <section id="faqs" aria-labelledby="faqs-title">
       <h2 id="faqs-title" class="section-title">FAQs</h2>
+
       <details>
         <summary>Is Robinhood free?</summary>
         <p>Trades are commission-free, but premium subscriptions and regulatory fees may apply.</p>
       </details>
+
       <details>
         <summary>Is Robinhood safe?</summary>
         <p>It uses encryption and offers 2FA; assets are covered by SIPC for brokerage failure. Market risk still applies.</p>
       </details>
+
       <details>
         <summary>Can I trade crypto?</summary>
         <p>Yes. Support for select cryptocurrencies like Bitcoin and Ethereum varies by region.</p>
@@ -155,7 +176,7 @@
   <button id="scrollTopBtn" class="btn secondary" aria-label="Scroll to top">↑ Top</button>
 
   <footer>
-    <p>&copy; 2025 Robinhood Informational Guide • <a href="#overview">Back to overview</a></p>
+    <p>&copy; 2025 Robinhood Informational Guide • <a href="index.html">Back to overview</a></p>
   </footer>
 
   <script>
@@ -163,9 +184,8 @@
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-    // Initialize after DOM is ready to avoid null elements
     document.addEventListener('DOMContentLoaded', () => {
-      // Persisted light/dark mode
+      // Theme toggle (robust)
       const modeBtn = $('#modeToggle');
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {
@@ -180,7 +200,7 @@
         });
       }
 
-      // Smooth scrolling only for targets that exist
+      // Smooth scrolling for internal anchors that exist
       $$('a[href^="#"]').forEach(anchor => {
         const href = anchor.getAttribute('href');
         const target = document.querySelector(href);
@@ -219,6 +239,7 @@
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
 
 
 
