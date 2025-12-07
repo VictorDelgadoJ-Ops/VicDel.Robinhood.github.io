@@ -14,8 +14,7 @@
     <nav class="nav" aria-label="Main navigation">
       <div class="logo">
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Robinhood_Logo_Small.png"
-             alt="Robinhood logo"
-             style="height:36px;width:auto;" />
+             alt="Robinhood logo" />
         <span>Robinhood: Informational Guide</span>
       </div>
       <div class="actions">
@@ -42,17 +41,11 @@
         <a href="https://signup.robinhood.com/"
            target="_blank"
            rel="noopener"
-           class="btn primary"
-           aria-label="Sign up for Robinhood">
-           Get Started
-        </a>
+           class="btn primary">Get Started</a>
         <a href="https://robinhood.com/us/en/about/"
            target="_blank"
            rel="noopener"
-           class="btn secondary"
-           aria-label="Learn more about Robinhood">
-           Learn More
-        </a>
+           class="btn secondary">Learn More</a>
       </div>
       <img class="stock-img"
            src="https://upload.wikimedia.org/wikipedia/commons/5/51/US_Stock_Market_-_Investing_in_the_United_States.jpg"
@@ -162,6 +155,7 @@
   </footer>
 
   <script>
+    // Persisted light/dark mode
     (function initTheme() {
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {
@@ -177,8 +171,10 @@
       document.getElementById('modeToggle').setAttribute('aria-pressed', String(isLight));
     });
 
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e)
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector
 
 
 
@@ -186,6 +182,7 @@
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
 
 
 
