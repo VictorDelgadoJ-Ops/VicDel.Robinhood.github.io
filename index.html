@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Robinhood: Informational Guide</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <a href="#maincontent" class="skip-link">Skip to content</a>
@@ -12,7 +13,6 @@
   <header class="container">
     <nav class="nav" aria-label="Main navigation">
       <div class="logo">
-        <!-- Use a direct image file for the logo to render properly -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Robinhood_Logo_Small.png"
              alt="Robinhood logo"
              style="height:36px;width:auto;" />
@@ -24,13 +24,11 @@
         </button>
       </div>
       <ul role="list">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#fees">Fees</a></li>
-        <li><a href="#security">Security</a></li>
-        <li><a href="#risks">Risks</a></li>
-        <li><a href="#faqs">FAQs</a></li>
-        <li><a href="#resources">Resources</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -41,7 +39,6 @@
       <div class="hero-card">
         <h1>Learn About Robinhood</h1>
         <p>Understand features, fees, and risks before investing.</p>
-        <!-- Get Started button goes to Robinhood sign-up -->
         <a href="https://signup.robinhood.com/"
            target="_blank"
            rel="noopener"
@@ -49,7 +46,6 @@
            aria-label="Sign up for Robinhood">
            Get Started
         </a>
-        <!-- Learn More button goes to Robinhood's About page -->
         <a href="https://robinhood.com/us/en/about/"
            target="_blank"
            rel="noopener"
@@ -58,17 +54,15 @@
            Learn More
         </a>
       </div>
-      <!-- Image 1: Stock Market Chart -->
       <img class="stock-img"
            src="https://upload.wikimedia.org/wikipedia/commons/5/51/US_Stock_Market_-_Investing_in_the_United_States.jpg"
-           alt="Picture f the U.S.A flag with stock trends" />
+           alt="Picture of the U.S.A flag with stock trends" />
     </section>
 
     <!-- Overview -->
     <section id="overview">
       <h2 class="section-title">Overview</h2>
       <p class="section-sub">Robinhood is a mobile-first platform for trading and investing.</p>
-      <!-- Image 2: Wall Street Charging Bull -->
       <img class="stock-img"
            src="https://upload.wikimedia.org/wikipedia/commons/3/36/Wall_Street_bubbles_-_Always_the_same_-_Keppler_1901.jpg"
            alt="Wall Street Charging Bull statue symbolizing market optimism" />
@@ -82,7 +76,6 @@
     <!-- Features -->
     <section id="features">
       <h2 class="section-title">Features</h2>
-      <!-- Image 3: NYSE Trading Floor -->
       <img class="stock-img"
            src="https://upload.wikimedia.org/wikipedia/commons/5/55/New_York_Stock_Exchange_Entrance.jpg"
            alt="New York Stock Exchange trading floor representing market activity" />
@@ -120,7 +113,6 @@
     <section id="risks">
       <h2 class="section-title">Risks</h2>
       <p class="section-sub">Investing involves risk. A simplified interface can encourage frequent trading. Market volatility, leverage (margin), and options strategies can magnify losses.</p>
-      <!-- Image 4: Candlestick Chart -->
       <img class="stock-img"
            src="https://upload.wikimedia.org/wikipedia/commons/3/33/Candlestick_Chart.png"
            alt="Candlestick chart used in technical analysis showing price movements" />
@@ -170,7 +162,6 @@
   </footer>
 
   <script>
-    // Persisted light/dark mode
     (function initTheme() {
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {
@@ -186,33 +177,8 @@
       document.getElementById('modeToggle').setAttribute('aria-pressed', String(isLight));
     });
 
-    // Smooth scrolling for anchor links (native is fine; ensure focus management)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-        // Move focus for accessibility
-        target.setAttribute('tabindex', '-1');
-        target.focus({ preventScroll: true });
-      });
-    });
-
-    // Scroll-to-top button visibility
-    const scrollBtn = document.getElementById('scrollTopBtn');
-    const toggleScrollBtn = () => {
-      scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-    };
-    window.addEventListener('scroll', toggleScrollBtn);
-    window.addEventListener('load', toggleScrollBtn);
-
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
-</body>
-</html>
+      anchor.addEventListener('click', (e)
 
 
 
@@ -220,6 +186,7 @@
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
 
 
 
