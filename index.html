@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+   <!-- Base ensures relative links resolve under your GitHub Pages repo path -->
 
-  <!-- Base URL for relative links -->
   <base href="/VicDel.Robinhood.github.io/">
-
-  <!-- External font stylesheet -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- External CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- SEO Meta Tags -->
-  <title>Robinhood Informational Guide | Learn Stock Trading Basics</title>
-  <meta name="description" content="Beginner-friendly guide to Robinhood. Learn features, fees, risks, and how to trade stocks.">
-  <meta name="keywords" content="Robinhood, stock trading, investing, beginner guide, buy stocks, sell stocks">
+  <title>Robinhood: Informational Guide | Stock Trading Basics</title>
+  
+  <!-- Meta Tags for improved SEO search using keywords for people curious on Robinhood -->
+  <meta name="description" content="Beginner-friendly guide to Robinhood. Learn how to buy and sell stocks, understand fees, risks, and explore trading strategies.">
+  <meta name="keywords" content="Robinhood, stock trading, investing, beginner guide, buy stocks, sell stocks, trading tips">
   <meta name="author" content="Victor Delgado">
-
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:title" content="Robinhood Informational Guide">
+   <meta property="og:title" content="Robinhood Informational Guide">
   <meta property="og:description" content="Learn how to trade stocks on Robinhood with this beginner-friendly guide.">
   <meta property="og:image" content="https://victordelgadoj-ops.github.io/VicDel.Robinhood.github.io/images/stock-guide.jpg">
   <meta property="og:url" content="https://victordelgadoj-ops.github.io/VicDel.Robinhood.github.io/">
-  <meta property="og:type" content="website">
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- NOTE: repo uses style.css (not styles.css) -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Skip link for accessibility -->
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a href="#maincontent" class="skip-link">Skip to content</a>
 
-  <!-- Header -->
-  <header>
-    <nav aria-label="Main navigation">
+  <header class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Robinhood_Logo_Small.png"
+             alt="Robinhood logo">
+         <a href="index.html" class="home-link" aria-label="Go to home">Robinhood: Informational Guide</a>
+      </div>
+
+      <div class="actions">
+        <button class="toggle-mode" id="modeToggle" aria-pressed="false" aria-label="Toggle light or dark mode">
+          Toggle Light/Dark
+        </button>
+      </div>
+
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="pages/about.html">About</a></li>
@@ -44,80 +49,194 @@
     </nav>
   </header>
 
-  <!-- Main content -->
-  <main id="main" class="container">
-    <section class="hero">
+  <main id="maincontent" class="container">
+    <!-- Hero -->
+    <section class="hero" aria-label="Introduction">
       <div class="hero-card">
-        <h1>Robinhood Informational Guide</h1>
-        <p>Understand features, fees, and risks before investing. Robinhood is a mobile-first platform for trading and investing.</p>
-        <a href="pages/tutorials.html" class="btn primary">Get Started</a>
+        <h1>Learn About Robinhood</h1>
+        <p>Understand features, fees, and risks before investing.</p>
+
+        <a href="https://signup.robinhood.com/"
+           target="_blank"
+           rel="noopener"
+           class="btn primary">Get Started</a>
+
+        <a href="https://robinhood.com/us/en/about/"
+           target="_blank"
+           rel="noopener"
+           class="btn secondary">Learn More</a>
       </div>
-      <img src="images/stock-guide.jpg" alt="Stock market chart illustration" class="stock-img">
+
+      <img class="stock-img"
+           loading="lazy"
+           src="https://upload.wikimedia.org/wikipedia/commons/5/51/US_Stock_Market_-_Investing_in_the_United_States.jpg"
+           alt="Picture of the U.S.A flag with stock trends">
     </section>
 
-    <section>
-      <h2>Overview of Robinhood</h2>
-      <p>Robinhood offers commission-free trades but may include other costs. Trading involves risk, and strategies can magnify losses.</p>
+    <!-- Overview -->
+    <section id="overview" aria-labelledby="overview-title">
+      <h2 id="overview-title" class="section-title">Overview</h2>
+      <p class="section-sub">Robinhood is a mobile-first platform for trading and investing.</p>
+
+      <img class="stock-img"
+           loading="lazy"
+           src="https://upload.wikimedia.org/wikipedia/commons/3/36/Wall_Street_bubbles_-_Always_the_same_-_Keppler_1901.jpg"
+           alt="Wall Street Charging Bull statue symbolizing market optimism">
+
+      <div class="grid-3">
+        <div class="card"><h3>Purpose</h3><p>Commission-free trading with a focus on ease of use.</p></div>
+        <div class="card"><h3>Audience</h3><p>Retail investors seeking a simplified experience.</p></div>
+        <div class="card"><h3>Availability</h3><p>Accessible via iOS/Android apps and web platform.</p></div>
+      </div>
     </section>
 
-    <section>
-      <h2>Features</h2>
-      <ul>
-        <li>Commission-free trading for stocks, ETFs, and options</li>
-        <li>Premium $5/month for Robinhood Gold</li>
-        <li>Encryption and SIPC protection</li>
-      </ul>
+    <!-- Features -->
+    <section id="features" aria-labelledby="features-title">
+      <h2 id="features-title" class="section-title">Features</h2>
+
+      <img class="stock-img"
+           loading="lazy"
+           src="https://upload.wikimedia.org/wikipedia/commons/5/55/New_York_Stock_Exchange_Entrance.jpg"
+           alt="New York Stock Exchange trading floor representing market activity">
+
+      <div class="grid-2">
+        <div class="card"><h3>Trading products</h3><p>Stocks, ETFs, options, and cryptocurrencies.</p></div>
+        <div class="card"><h3>Account types</h3><p>Standard brokerage, margin accounts, and premium subscriptions.</p></div>
+        <div class="card"><h3>Tools & research</h3><p>Watchlists, charts, news, alerts, and in-app education.</p></div>
+        <div class="card"><h3>Interface</h3><p>Clean, mobile-first design with streamlined onboarding and trading flows.</p></div>
+      </div>
     </section>
 
-    <section>
-      <h2>Risks</h2>
-      <p>Market volatility, leverage (margin), and options strategies can magnify losses. SIPC covers brokerage failure, not market losses.</p>
-    </section>
+    <!-- Fees -->
+    <section id="fees" aria-labelledby="fees-title">
+      <h2 id="fees-title" class="section-title">Fees</h2>
+      <p class="section-sub">Robinhood offers commission-free trades but may include other costs.</p>
 
-    <section>
-      <h2>FAQs</h2>
-      <details>
-        <summary>Is Robinhood free?</summary>
-        <p>Yes, trades are commission-free, but other fees may apply.</p>
-      </details>
-      <details>
-        <summary>Does Robinhood protect my investments?</summary>
-        <p>SIPC covers brokerage failure, but not market losses.</p>
-      </details>
-    </section>
-
-    <section>
-      <h2>Resources</h2>
-      <table>
+      <table aria-label="Fees table">
         <thead>
-          <tr>
-            <th>Resource</th>
-            <th>Link</th>
-          </tr>
+          <tr><th scope="col">Fee type</th><th scope="col">Details</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Robinhood Official Site</td>
-            <td><a href="https://robinhood.com" target="_blank">Visit</a></td>
-          </tr>
-          <tr>
-            <td>Investopedia Guide</td>
-            <td><a href="https://www.investopedia.com" target="_blank">Visit</a></td>
-          </tr>
+          <tr><td>Trading</td><td>Commission-free for stocks, ETFs, and options.</td></tr>
+          <tr><td>Premium</td><td>$5/month for Robinhood Gold.</td></tr>
+          <tr><td>Other</td><td>Regulatory fees, margin interest, and transfer fees may apply.</td></tr>
         </tbody>
       </table>
     </section>
+
+    <!-- Security -->
+    <section id="security" aria-labelledby="security-title">
+      <h2 id="security-title" class="section-title">Security</h2>
+      <p class="section-sub">Robinhood implements encryption, optional two-factor authentication, and SIPC protection. Remember, SIPC covers brokerage failure, not market losses.</p>
+    </section>
+
+    <!-- Risks -->
+    <section id="risks" aria-labelledby="risks-title">
+      <h2 id="risks-title" class="section-title">Risks</h2>
+      <p class="section-sub">Investing involves risk. A simplified interface can encourage frequent trading. Market volatility, leverage (margin), and options strategies can magnify losses.</p>
+
+      <img class="stock-img"
+           loading="lazy"
+           src="https://upload.wikimedia.org/wikipedia/commons/3/33/Candlestick_Chart.png"
+           alt="Candlestick chart used in technical analysis showing price movements">
+    </section>
+
+    <!-- FAQs -->
+    <section id="faqs" aria-labelledby="faqs-title">
+      <h2 id="faqs-title" class="section-title">FAQs</h2>
+
+      <details>
+        <summary>Is Robinhood free?</summary>
+        <p>Trades are commission-free, but premium subscriptions and regulatory fees may apply.</p>
+      </details>
+
+      <details>
+        <summary>Is Robinhood safe?</summary>
+        <p>It uses encryption and offers 2FA; assets are covered by SIPC for brokerage failure. Market risk still applies.</p>
+      </details>
+
+      <details>
+        <summary>Can I trade crypto?</summary>
+        <p>Yes. Support for select cryptocurrencies like Bitcoin and Ethereum varies by region.</p>
+      </details>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" aria-labelledby="resources-title">
+      <h2 id="resources-title" class="section-title">Resources</h2>
+      <p>
+        Visit <a href="https://robinhood.com" target="_blank" rel="noopener">Robinhood’s official site</a> or explore
+        <a href="https://www.investopedia.com" target="_blank" rel="noopener">Investopedia</a> for financial education.
+      </p>
+    </section>
+
+    <!-- Legal & Privacy -->
+    <section aria-label="Legal and privacy notice">
+      <p style="color: var(--muted); font-size: 0.95rem;">
+        Disclaimer: This site is not affiliated with Robinhood Markets, Inc. It is for educational purposes only.
+        <br>
+        Privacy Notice: No personal data is collected or stored through this site.
+      </p>
+    </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Scroll to Top -->
+  <button id="scrollTopBtn" class="btn secondary" aria-label="Scroll to top">↑ Top</button>
+
   <footer>
-    <p>&copy; 2025 Robinhood Informational Guide • Built by Victor Delgado</p>
-    <a href="pages/contact.html">Contact</a>
-    <a href="pages/about.html">About</a>
+    <p>&copy; 2025 Robinhood Informational Guide • <a href="index.html">Back to overview</a></p>
   </footer>
 
-  <!-- Scroll to top button -->
-  <button id="scrollTopBtn" class="btn secondary">Top</button>
+  <script>
+    // Safe helpers
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme toggle (robust)
+      const modeBtn = $('#modeToggle');
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.body.classList.add('light');
+        if (modeBtn) modeBtn.setAttribute('aria-pressed', 'true');
+      }
+      if (modeBtn) {
+        modeBtn.addEventListener('click', () => {
+          const isLight = document.body.classList.toggle('light');
+          localStorage.setItem('theme', isLight ? 'light' : 'dark');
+          modeBtn.setAttribute('aria-pressed', String(isLight));
+        });
+      }
+
+      // Smooth scrolling for internal anchors that exist
+      $$('a[href^="#"]').forEach(anchor => {
+        const href = anchor.getAttribute('href');
+        const target = document.querySelector(href);
+        if (!target) return;
+        anchor.addEventListener('click', (e) => {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
+        });
+      });
+
+      // Scroll-to-top button visibility
+      const scrollBtn = $('#scrollTopBtn');
+      const toggleScrollBtn = () => {
+        if (!scrollBtn) return;
+        scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+      };
+      window.addEventListener('scroll', toggleScrollBtn);
+      window.addEventListener('load', toggleScrollBtn);
+
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
 
@@ -128,3 +247,12 @@
  <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
     The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
     and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
+
+
+
+    
+ <!-- Beginning of documentation setup. Uses common DOCTYPE html for the set up and included title, meta, links and fonts for use in future reference. starting small to make sure I meet project deadline and expand as needed\*
+    The next part of the code I used was for the background of the webpage and being eligible to scroll down since the webpage needs a little more space than intented. starting to assemble the header for the page
+    and start the process for putting my title to the website and hopefully quick links and a screen reader for the users -->
+
