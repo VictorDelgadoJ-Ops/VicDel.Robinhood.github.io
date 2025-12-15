@@ -56,7 +56,6 @@ header { padding: 40px 0 20px 0; }
 .nav a:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
 .nav a:hover { background: rgba(38,48,82,0.35); }
 
-
 .nav a::after {
   content: "";
   position: absolute;
