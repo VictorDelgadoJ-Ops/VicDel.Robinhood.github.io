@@ -199,8 +199,8 @@ footer a { color: var(--accent-2); margin: 0 10px; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .nav ul { flex-wrap: wrap; }
   .nav a {
-    padding: 10px; }
-
+    padding: 10px; 
+  }
   nav ul {
   display: flex;
   flex-wrap: wrap;   /* allows wrapping */
@@ -230,3 +230,5 @@ nav a {
     width: 100%;              /* make each button full width */
     text-align: center; 
   }
+  }
+}
