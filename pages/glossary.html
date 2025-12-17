@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head href="/VicDel.Robinhood.github.io/">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Glossary of Terms</title>
-  <base href="/VicDel.Robinhood.github.io/">
+  <title>About Robinhood</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="container">
-    <nav class="nav" aria-label="Main navigation">
+    <nav class="nav" aria-label="Main navigation" role="navigation">
       <div class="logo">
-         <a href="index.html" class="home-link" aria-label="Go to home">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Robinhood_Logo_Small.png" alt="Robinhood logo" />
-        <span>Robinhood Guide</span>
+        <a href="index.html" class="home-link" aria-label="Go to home">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Robinhood_Logo_Small.png" alt="Robinhood logo" />
+          <span>Robinhood Guide</span>
+        </a>
       </div>
-      <ul role="list">
+      <ul>
         <li><a href="index.html">Home</a></li>
       </ul>
     </nav>
@@ -23,22 +23,16 @@
 
   <main class="container">
     <section>
-      <h1 class="section-title">Glossary</h1>
-      <p class="section-sub">Key financial and trading terms explained simply.</p>
-      <dl>
-        <dt>ETF</dt>
-        <dd>Exchange‑Traded Fund, a basket of securities traded on an exchange.</dd>
-        <dt>Margin</dt>
-        <dd>Borrowed money used to invest, which can magnify gains and losses.</dd>
-        <dt>SIPC</dt>
-        <dd>Securities Investor Protection Corporation, which protects against brokerage failure (not market losses).</dd>
-        <dt>Options</dt>
-        <dd>Contracts that give the right, but not the obligation, to buy or sell an asset at a set price.</dd>
-      </dl>
+      <h1 class="section-title">About Robinhood</h1>
+      <p class="section-sub">Learn about Robinhood’s mission, history, and role in democratizing finance.</p>
+      <div class="card">
+        <p>Robinhood was founded in 2013 with the goal of making investing accessible to everyone. Its commission‑free model disrupted traditional brokerage firms and encouraged millions of new investors to enter the market.</p>
+      </div>
     </section>
+    <button id="modeToggle" aria-pressed="false">Toggle Theme</button>
   </main>
+
   <script>
-    // Minimal safe script: theme toggle + no assumptions about other elements
     document.addEventListener('DOMContentLoaded', () => {
       const modeBtn = document.getElementById('modeToggle');
       if (modeBtn) {
@@ -50,8 +44,10 @@
           modeBtn.setAttribute('aria-pressed', String(isLight));
         });
       }
-        </script>
-  <footer>
+    });
+  </script>
+
+  <footer role="contentinfo">
     <p>&copy; 2025 Robinhood Informational Guide</p>
   </footer>
 </body>
