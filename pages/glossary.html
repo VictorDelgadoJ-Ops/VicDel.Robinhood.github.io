@@ -37,7 +37,20 @@
       </dl>
     </section>
   </main>
-
+  <script>
+    // Minimal safe script: theme toggle + no assumptions about other elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const modeBtn = document.getElementById('modeToggle');
+      if (modeBtn) {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light') document.body.classList.add('light');
+        modeBtn.addEventListener('click', () => {
+          const isLight = document.body.classList.toggle('light');
+          localStorage.setItem('theme', isLight ? 'light' : 'dark');
+          modeBtn.setAttribute('aria-pressed', String(isLight));
+        });
+      }
+        </script>
   <footer>
     <p>&copy; 2025 Robinhood Informational Guide</p>
   </footer>
