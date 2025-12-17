@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Robinhood</title>
+  <meta name="description" content="Learn about Robinhood’s mission, history, and role in democratizing finance." />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body aria-live="polite">
   <header class="container">
     <nav class="nav" aria-label="Main navigation" role="navigation">
       <div class="logo">
@@ -19,6 +20,7 @@
         <li><a href="index.html">Home</a></li>
       </ul>
     </nav>
+    <button id="modeToggle" aria-pressed="false">Toggle Theme</button>
   </header>
 
   <main class="container">
@@ -29,7 +31,6 @@
         <p>Robinhood was founded in 2013 with the goal of making investing accessible to everyone. Its commission‑free model disrupted traditional brokerage firms and encouraged millions of new investors to enter the market.</p>
       </div>
     </section>
-    <button id="modeToggle" aria-pressed="false">Toggle Theme</button>
   </main>
 
   <script>
