@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head href="/VicDel.Robinhood.github.io/">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Robinhood</title>
@@ -9,11 +9,12 @@
 </head>
 <body>
   <header class="container">
-    <nav class="nav" aria-label="Main navigation">
+    <nav class="nav" aria-label="Main navigation" role="navigation">
       <div class="logo">
-         <a href="index.html" class="home-link" aria-label="Go to home">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Robinhood_Logo_Small.png" alt="Robinhood logo" />
-        <span>Robinhood Guide</span>
+        <a href="index.html" class="home-link" aria-label="Go to home">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Robinhood_Logo_Small.png" alt="Robinhood logo" />
+          <span>Robinhood Guide</span>
+        </a>
       </div>
       <ul role="list">
         <li><a href="index.html">Home</a></li>
@@ -30,8 +31,8 @@
       </div>
     </section>
   </main>
+
   <script>
-    // Minimal safe script: theme toggle + no assumptions about other elements
     document.addEventListener('DOMContentLoaded', () => {
       const modeBtn = document.getElementById('modeToggle');
       if (modeBtn) {
@@ -43,7 +44,9 @@
           modeBtn.setAttribute('aria-pressed', String(isLight));
         });
       }
-        </script>
+    });
+  </script>
+
   <footer>
     <p>&copy; 2025 Robinhood Informational Guide</p>
   </footer>
