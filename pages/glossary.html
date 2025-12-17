@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head href="/VicDel.Robinhood.github.io/">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Robinhood</title>
-  <meta name="description" content="Learn about Robinhood’s mission, history, and role in democratizing finance." />
+  <title>Robinhood Tutorials</title>
+  <base href="/VicDel.Robinhood.github.io/">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body aria-live="polite">
+<body>
   <header class="container">
-    <nav class="nav" aria-label="Main navigation" role="navigation">
+    <nav class="nav" aria-label="Main navigation">
       <div class="logo">
-        <a href="index.html" class="home-link" aria-label="Go to home">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Robinhood_Logo_Small.png" alt="Robinhood logo" />
-          <span>Robinhood Guide</span>
-        </a>
+         <a href="index.html" class="home-link" aria-label="Go to home">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Robinhood_Logo_Small.png" alt="Robinhood logo" />
+        <span>Robinhood Guide</span>
       </div>
-      <ul>
+      <ul role="list">
         <li><a href="index.html">Home</a></li>
       </ul>
     </nav>
-    <button id="modeToggle" aria-pressed="false">Toggle Theme</button>
   </header>
 
   <main class="container">
     <section>
-      <h1 class="section-title">About Robinhood</h1>
-      <p class="section-sub">Learn about Robinhood’s mission, history, and role in democratizing finance.</p>
-      <div class="card">
-        <p>Robinhood was founded in 2013 with the goal of making investing accessible to everyone. Its commission‑free model disrupted traditional brokerage firms and encouraged millions of new investors to enter the market.</p>
+      <h1 class="section-title">Tutorials</h1>
+      <p class="section-sub">Step‑by‑step guides to help you get started with Robinhood.</p>
+      <div class="grid-2">
+        <div class="card"><h3>Creating an Account</h3><p>Learn how to sign up, verify your identity, and set up your first brokerage account.</p></div>
+        <div class="card"><h3>Buying Stocks</h3><p>Understand how to search for companies, review charts, and place your first trade.</p></div>
+        <div class="card"><h3>Using Watchlists</h3><p>Track your favorite stocks and ETFs with Robinhood’s watchlist feature.</p></div>
+        <div class="card"><h3>Exploring Crypto</h3><p>Discover how to buy and sell cryptocurrencies like Bitcoin and Ethereum.</p></div>
       </div>
     </section>
   </main>
-
   <script>
+    // Minimal safe script: theme toggle + no assumptions about other elements
     document.addEventListener('DOMContentLoaded', () => {
       const modeBtn = document.getElementById('modeToggle');
       if (modeBtn) {
@@ -45,11 +46,10 @@
           modeBtn.setAttribute('aria-pressed', String(isLight));
         });
       }
-    });
-  </script>
-
-  <footer role="contentinfo">
+        </script>
+  <footer>
     <p>&copy; 2025 Robinhood Informational Guide</p>
   </footer>
 </body>
 </html>
+
